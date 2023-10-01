@@ -17,10 +17,18 @@ let mapleader = "\<Space>"
 set modelines=0
 set ruler
 set encoding=utf-8
+
+" Automatically saves changes made to a file before performing certain operations
+" helping to prevent data loss
+set autowrite
+
+" Disable vi compatibility mode
 set nocompatible
 
+" Automatically indent new lines
+set autoindent
+
 " Enable Status Line
-" set laststatus=2
 set statusline=%F\ %y\ %l/%L\ %p%%\ %=
 
 set textwidth=80
@@ -41,11 +49,18 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 set ttimeout
 set ttimeoutlen=1
 set listchars=tab:>-,trail:~,extends:>,precedes:<,space:.
-set ttyfast " Otimiza exp. de edição deixando-a mais suave em terminais mais lentos 
 
-set scrolloff=5 " See the last 5 five lines below the cursor
+" Otimiza exp. de edição deixando-a mais suave em terminais mais lentos
+set ttyfast
+
+" See the last 5 five lines below the cursor
+set scrolloff=5
+
 set backspace=indent,eol,start
-set matchpairs+=<:> " use % to jump between pairs
+
+" Use % to jump between pairs
+set matchpairs+=<:>
+
 runtime! macros/matchit.vim
 
 set background=dark
@@ -67,6 +82,15 @@ set ignorecase
 set smartcase
 set showmatch
 
+" :noh executado automaticamente após salvar o arquivo
+autocmd BufWritePost * :nohlsearch
+
+" Salvar visualização (incluindo a posição do cursor) ao sair
+autocmd BufWinLeave * mkview
+
+" Restaurar visualização (incluindo a posição do cursor) ao abrir
+autocmd BufRead * silent! loadview
+
 " Quickly switch between tabs
 nnoremap <C-h> :bprevious<CR>
 nnoremap <C-l> :bnext<CR>
@@ -80,6 +104,23 @@ inoremap { {}<left>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
+" Go
+let g:go_fmt_fail_silently = 0
+" let g:go_fmt_command = 'goimports'
+let g:go_fmt_autosave = 1
+let g:go_gopls_enabled = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_variable_declarations = 1
+let g:go_highlight_variable_assignments = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_diagnostic_errors = 1
+let g:go_highlight_diagnostic_warnings = 1
+
 " OCaml
 set rtp^="/Users/ms/.opam/testing/share/ocp-indent/vim"
 
@@ -91,3 +132,4 @@ map <C-c> "+y
 
 " Save the current file
 nnoremap <Leader>s :w<CR>
+
