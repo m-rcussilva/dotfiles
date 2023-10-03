@@ -98,7 +98,7 @@ nnoremap <C-l> :bnext<CR>
 " Folding functionality that allows you to collapse or fold code blocks
 " Use 'za' to toggle folding for the current fold
 " You can also use 'zc' to close and 'zo' to open
-set foldmethod=indent
+" set foldmethod=indent
 
 " Automatically insert closing delimiters
 inoremap " ""<left>
