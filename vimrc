@@ -9,6 +9,9 @@ Plug 'mattn/emmet-vim'
 " Retro groove color scheme for Vim
 Plug 'morhetz/gruvbox'
 
+" A tree explorer plugin for Vim
+Plug 'scrooloose/nerdtree'
+
 call plug#end()
 
 syntax on
@@ -109,6 +112,9 @@ inoremap { {}<left>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
+" NERDTree
+let g:NERDTreeWinPos = "right"
+
 " Go
 let g:go_fmt_fail_silently = 0
 " let g:go_fmt_command = 'goimports'
@@ -135,6 +141,14 @@ set rtp^="/Users/ms/.opam/testing/share/ocp-indent/vim"
 map <C-a> ggVG
 map <C-c> "+y
 
+" For Split Navigation
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
+
 " Save the current file
 nnoremap <Leader>s :w<CR>
 
+" NERDTree
+nnoremap <C-t> :NERDTreeToggle<CR>
