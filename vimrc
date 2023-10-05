@@ -50,6 +50,10 @@ set softtabstop=4
 set expandtab
 set noshiftround
 
+" Split Window to the right side and below
+set splitright
+set splitbelow
+
 " Handle Makefile correctly when using tab
 autocmd BufRead,BufNewFile Makefile* setlocal noexpandtab
 
