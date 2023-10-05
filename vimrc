@@ -20,6 +20,9 @@ Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'HerringtonDarkholme/yats.vim'
 
+" CSS3 Prewview colors
+Plug 'ap/vim-css-color'
+
 call plug#end()
 
 syntax on
@@ -109,6 +112,10 @@ autocmd BufWinLeave * mkview
 
 " Restaurar visualização (incluindo a posição do cursor) ao abrir
 autocmd BufRead * silent! loadview
+
+" CSS3 Language Server extension for coc.nvim
+autocmd FileType scss setl iskeyword+=@-@
+autocmd FileType css setl iskeyword+=-
 
 " Quickly switch between tabs
 nnoremap <C-h> :bprevious<CR>
