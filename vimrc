@@ -15,6 +15,11 @@ Plug 'scrooloose/nerdtree'
 " Nodejs extension host for Vim e Neovim and host language servers
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" JavaScript Plugins
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'HerringtonDarkholme/yats.vim'
+
 call plug#end()
 
 syntax on
