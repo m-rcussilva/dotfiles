@@ -12,6 +12,9 @@ Plug 'morhetz/gruvbox'
 " A tree explorer plugin for Vim
 Plug 'scrooloose/nerdtree'
 
+" Nodejs extension host for Vim e Neovim and host language servers
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 call plug#end()
 
 syntax on
@@ -85,6 +88,10 @@ set ignorecase
 set smartcase
 set showmatch
 
+" The tab character to: unicode u2192 →
+" The end of line character to: unicode u21b2 ↲
+set listchars=eol:↲
+
 " :noh executado automaticamente após salvar o arquivo
 autocmd BufWritePost * :nohlsearch
 
@@ -152,3 +159,26 @@ nnoremap <Leader>s :w<CR>
 
 " NERDTree
 nnoremap <C-t> :NERDTreeToggle<CR>
+
+" CoC
+nnoremap <silent> K :call CocAction('doHover')<CR>
+
+function! ShowDocIfNoDiagnostic(timer_id)
+    if (coc#float#has_float() == 0 && CocHasProvider('hover') == 1)
+        silent call CocActionAsync('doHover')
+    endif
+endfunction
+
+function! s:show_hover_doc()
+    call timer_start(500, 'ShowDocIfNoDiagnostic')
+endfunction
+
+autocmd CursorHoldI * :call <SID>show_hover_doc()
+autocmd CursorHold * :call <SID>show_hover_doc()
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gr <Plug>(coc-references)
+
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
