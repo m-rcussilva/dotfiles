@@ -36,8 +36,13 @@ set encoding=utf-8
 " helping to prevent data loss
 set autowrite
 
-" Disable vi compatibility mode
+" FUZZY SEARCH
+" Disable vi compatibility mode and limit search to your project
 set nocompatible
+" Search all subdirectories and recursively
+set path+=**
+" Shows multiple matches on one line
+set wildmenu
 
 " Automatically indent new lines
 set autoindent
