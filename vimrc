@@ -166,8 +166,8 @@ set rtp^="/Users/ms/.opam/testing/share/ocp-indent/vim"
 " Key mappings
 
 " Copy and paste
-map <C-a> ggVG
-map <C-c> "+y
+map <leader> ggVG
+map <leader> "+y
 
 " For Split Navigation
 nnoremap <leader>h <C-w>h
