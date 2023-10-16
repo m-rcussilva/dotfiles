@@ -1,0 +1,7 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+      "go", "javascript", "typescript", "jsx", "tsx", "css", "html", "sql"
+  ],
+  "coc.preferences.snippetSuggestions": "textmate"
+}
+
