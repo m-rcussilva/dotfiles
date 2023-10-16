@@ -142,9 +142,6 @@ inoremap { {}<left>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
-" NERDTree
-let g:NERDTreeWinPos = "right"
-
 " Go
 let g:go_fmt_fail_silently = 0
 " let g:go_fmt_command = 'goimports'
@@ -180,10 +177,28 @@ nnoremap <leader>l <C-w>l
 " Save the current file
 nnoremap <Leader>s :w<CR>
 
-" NERDTree
-nnoremap <C-t> :NERDTreeToggle<CR>
+" -------- "
+" NERDTree "
+" -------- "
 
-" CoC
+nnoremap <C-t> :NERDTreeToggle<CR>
+let g:NERDTreeWinPos = "right"
+
+" -------- "
+" CoC NVIM "
+" -------- "
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
 nnoremap <silent> K :call CocAction('doHover')<CR>
 
 function! ShowDocIfNoDiagnostic(timer_id)
@@ -199,12 +214,28 @@ endfunction
 autocmd CursorHoldI * :call <SID>show_hover_doc()
 autocmd CursorHold * :call <SID>show_hover_doc()
 
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gr <Plug>(coc-references)
+" Symbol renaming
+nmap <leader>rn <Plug>(coc-rename)
 
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" Applying code actions to the selected code block
+" Example: `<leader>aap` for current paragraph
+xmap <leader>ap <Plug>(coc-codeaction-selected)
+nmap <leader>ap <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying code actions at the cursor position
+nmap <leader>ac  <Plug>(coc-codeaction-cursor)
+" Remap keys for apply code actions affect whole buffer
+nmap <leader>as  <Plug>(coc-codeaction-source)
+" Apply the most preferred quickfix action to fix diagnostic on the current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Remap keys for applying refactor code actions
+nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
+xmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
+nmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
+
+" Run the Code Lens action on the current line
+nmap <leader>cl  <Plug>(coc-codelens-action)
 
 " Ative o CoC para o Go
 let g:coc_global_extensions = [
