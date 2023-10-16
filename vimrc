@@ -182,6 +182,7 @@ nnoremap <Leader>s :w<CR>
 " -------- "
 
 nnoremap <C-t> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 let g:NERDTreeWinPos = "right"
 
 " -------- "
