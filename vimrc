@@ -105,7 +105,8 @@ set ignorecase
 set smartcase
 set showmatch
 
-set cursorline
+" set cursorline
+au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
 
 " The tab character to: unicode u2192 →
 " The end of line character to: unicode u21b2 ↲
