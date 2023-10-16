@@ -105,6 +105,8 @@ set ignorecase
 set smartcase
 set showmatch
 
+set cursorline
+
 " The tab character to: unicode u2192 →
 " The end of line character to: unicode u21b2 ↲
 set listchars=eol:↲
@@ -203,3 +205,11 @@ nmap <silent> gr <Plug>(coc-references)
 
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Ative o CoC para o Go
+let g:coc_global_extensions = [
+    \ 'coc-go',
+    \ 'coc-snippets',
+    \ 'coc-json',
+    \ 'coc-yaml',
+    \ ]
