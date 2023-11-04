@@ -1,36 +1,14 @@
-call plug#begin()
-
-" Go development plugin
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
-" Provides support for expanding abreviation similar to emmet (HTML5, CSS3)
-Plug 'mattn/emmet-vim'
-
-" Retro groove color scheme for Vim
-Plug 'morhetz/gruvbox'
-
-" A tree explorer plugin for Vim
-Plug 'scrooloose/nerdtree'
-
-" Nodejs extension host for Vim e Neovim and host language servers
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" JavaScript Plugins
-Plug 'yuezk/vim-js'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'HerringtonDarkholme/yats.vim'
-
-" CSS3 Prewview colors
-Plug 'ap/vim-css-color'
-
-call plug#end()
-
 syntax on
 set number
 let mapleader = "\<Space>"
 set modelines=0
 set ruler
 set encoding=utf-8
+
+" set t_Co=16
+set background=dark
+
+set nowrap
 
 " Automatically saves changes made to a file before performing certain operations
 " helping to prevent data loss
@@ -86,9 +64,6 @@ set matchpairs+=<:>
 
 runtime! macros/matchit.vim
 
-set background=dark
-colorscheme gruvbox
-
 set hidden
 set showmode
 set showcmd
@@ -96,7 +71,7 @@ set showcmd
 " Disable beep and flash
 set noerrorbells visualbell t_vb=
 if has('autocmd')
-  autocmd GUIEnter * set visualbell t_vb=
+    autocmd GUIEnter * set visualbell t_vb=
 endif
 
 set hlsearch
@@ -107,10 +82,7 @@ set showmatch
 
 " set cursorline
 au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-
-" The tab character to: unicode u2192 →
-" The end of line character to: unicode u21b2 ↲
-set listchars=eol:↲
+au WinLeave * setlocal nocursorline
 
 " :noh executado automaticamente após salvar o arquivo
 autocmd BufWritePost * :nohlsearch
@@ -120,10 +92,6 @@ autocmd BufWinLeave * mkview
 
 " Restaurar visualização (incluindo a posição do cursor) ao abrir
 autocmd BufRead * silent! loadview
-
-" CSS3 Language Server extension for coc.nvim
-autocmd FileType scss setl iskeyword+=@-@
-autocmd FileType css setl iskeyword+=-
 
 " Quickly switch between tabs
 nnoremap <C-h> :bprevious<CR>
@@ -143,28 +111,6 @@ inoremap { {}<left>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
-" Go
-let g:go_fmt_fail_silently = 0
-" let g:go_fmt_command = 'goimports'
-let g:go_fmt_autosave = 1
-let g:go_gopls_enabled = 1
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_variable_declarations = 1
-let g:go_highlight_variable_assignments = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_diagnostic_errors = 1
-let g:go_highlight_diagnostic_warnings = 1
-
-" OCaml
-set rtp^="/Users/ms/.opam/testing/share/ocp-indent/vim"
-
-" Key mappings
-
 " Copy and paste
 map <leader> ggVG
 map <leader> "+y
@@ -174,75 +120,3 @@ nnoremap <leader>h <C-w>h
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 nnoremap <leader>l <C-w>l
-
-" Save the current file
-nnoremap <Leader>s :w<CR>
-
-" -------- "
-" NERDTree "
-" -------- "
-
-nnoremap <C-t> :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1
-let g:NERDTreeWinPos = "right"
-
-" -------- "
-" CoC NVIM "
-" -------- "
-
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" GoTo code navigation
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-nnoremap <silent> K :call CocAction('doHover')<CR>
-
-function! ShowDocIfNoDiagnostic(timer_id)
-    if (coc#float#has_float() == 0 && CocHasProvider('hover') == 1)
-        silent call CocActionAsync('doHover')
-    endif
-endfunction
-
-function! s:show_hover_doc()
-    call timer_start(500, 'ShowDocIfNoDiagnostic')
-endfunction
-
-autocmd CursorHoldI * :call <SID>show_hover_doc()
-autocmd CursorHold * :call <SID>show_hover_doc()
-
-" Symbol renaming
-nmap <leader>rn <Plug>(coc-rename)
-
-" Applying code actions to the selected code block
-" Example: `<leader>aap` for current paragraph
-xmap <leader>ap <Plug>(coc-codeaction-selected)
-nmap <leader>ap <Plug>(coc-codeaction-selected)
-
-" Remap keys for applying code actions at the cursor position
-nmap <leader>ac  <Plug>(coc-codeaction-cursor)
-" Remap keys for apply code actions affect whole buffer
-nmap <leader>as  <Plug>(coc-codeaction-source)
-" Apply the most preferred quickfix action to fix diagnostic on the current line
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Remap keys for applying refactor code actions
-nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
-xmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
-nmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
-
-" Run the Code Lens action on the current line
-nmap <leader>cl  <Plug>(coc-codelens-action)
-
-" Ative o CoC para o Go
-let g:coc_global_extensions = [
-    \ 'coc-go',
-    \ 'coc-snippets',
-    \ 'coc-json',
-    \ 'coc-yaml',
-    \ ]
