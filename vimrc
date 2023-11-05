@@ -1,20 +1,50 @@
+call plug#begin()
+
+" Go
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+" CoC
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" NERD Tree
+Plug 'scrooloose/nerdtree'
+
+" Gruvbox Theme
+Plug 'morhetz/gruvbox'
+
+" Vim Airline
+Plug 'vim-airline/vim-airline'
+
+" Dev Icons
+Plug 'ryanoasis/vim-devicons'
+
+" Comment stuff out
+Plug 'tpope/vim-commentary'
+
+call plug#end()
+
 syntax on
 set number
+set relativenumber
 let mapleader = "\<Space>"
 set modelines=0
 set ruler
 set encoding=utf-8
 
-" set t_Co=16
 set background=dark
+colorscheme gruvbox
 
 set nowrap
+
+set nobackup
+set noswapfile
+set nowritebackup
 
 " Automatically saves changes made to a file before performing certain operations
 " helping to prevent data loss
 set autowrite
 
-" FUZZY SEARCH
+" Fuzzy Search
 " Disable vi compatibility mode and limit search to your project
 set nocompatible
 " Search all subdirectories and recursively
@@ -39,6 +69,8 @@ set noshiftround
 " Split Window to the right side and below
 set splitright
 set splitbelow
+nnoremap <leader>sv :vsplit<CR>
+nnoremap <leader>sh :split<CR>
 
 " Handle Makefile correctly when using tab
 autocmd BufRead,BufNewFile Makefile* setlocal noexpandtab
@@ -47,6 +79,7 @@ autocmd BufRead,BufNewFile Makefile* setlocal noexpandtab
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
 set ttimeout
 set ttimeoutlen=1
 set listchars=tab:>-,trail:~,extends:>,precedes:<,space:.
@@ -55,7 +88,7 @@ set listchars=tab:>-,trail:~,extends:>,precedes:<,space:.
 set ttyfast
 
 " See the last 5 five lines below the cursor
-set scrolloff=5
+set scrolloff=10
 
 set backspace=indent,eol,start
 
@@ -64,21 +97,27 @@ set matchpairs+=<:>
 
 runtime! macros/matchit.vim
 
+set cinoptions+=:0
+
 set hidden
 set showmode
 set showcmd
-
-" Disable beep and flash
-set noerrorbells visualbell t_vb=
-if has('autocmd')
-    autocmd GUIEnter * set visualbell t_vb=
-endif
 
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
 set showmatch
+
+if has("syntax")
+  syntax enable
+endif
+
+" Disable beep and flash
+set noerrorbells visualbell t_vb=
+if has('autocmd')
+    autocmd GUIEnter * set visualbell t_vb=
+endif
 
 " set cursorline
 au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
@@ -88,10 +127,7 @@ au WinLeave * setlocal nocursorline
 autocmd BufWritePost * :nohlsearch
 
 " Salvar visualização (incluindo a posição do cursor) ao sair
-autocmd BufWinLeave * mkview
-
-" Restaurar visualização (incluindo a posição do cursor) ao abrir
-autocmd BufRead * silent! loadview
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Quickly switch between tabs
 nnoremap <C-h> :bprevious<CR>
@@ -111,12 +147,144 @@ inoremap { {}<left>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
-" Copy and paste
-map <leader> ggVG
-map <leader> "+y
-
 " For Split Navigation
 nnoremap <leader>h <C-w>h
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 nnoremap <leader>l <C-w>l
+
+" + ------------------------------------------ + "
+" | Gruvbox Dark Friendly From github.com/rwxrob |
+" + ------------------------------------------ + "
+
+" Base default color changes (gruvbox dark friendly)
+hi StatusLine ctermfg=black ctermbg=NONE
+hi StatusLineNC ctermfg=black ctermbg=NONE
+hi Normal ctermbg=NONE
+hi Special ctermfg=cyan
+hi LineNr ctermfg=black ctermbg=NONE
+hi SpecialKey ctermfg=black ctermbg=NONE
+hi ModeMsg ctermfg=black cterm=NONE ctermbg=NONE
+hi MoreMsg ctermfg=black ctermbg=NONE
+hi NonText ctermfg=black ctermbg=NONE
+hi vimGlobal ctermfg=black ctermbg=NONE
+hi ErrorMsg ctermbg=234 ctermfg=darkred cterm=NONE
+hi Error ctermbg=234 ctermfg=darkred cterm=NONE
+hi SpellBad ctermbg=234 ctermfg=darkred cterm=NONE
+hi SpellRare ctermbg=234 ctermfg=darkred cterm=NONE
+hi Search ctermbg=236 ctermfg=darkred
+hi vimTodo ctermbg=236 ctermfg=darkred
+hi Todo ctermbg=236 ctermfg=darkred
+hi IncSearch ctermbg=236 cterm=NONE ctermfg=darkred
+hi MatchParen ctermbg=236 ctermfg=darkred
+
+" Color overrides
+au FileType * hi StatusLine ctermfg=black ctermbg=NONE
+au FileType * hi StatusLineNC ctermfg=black ctermbg=NONE
+au FileType * hi Normal ctermbg=NONE
+au FileType * hi Special ctermfg=cyan
+au FileType * hi LineNr ctermfg=238 ctermbg=NONE
+au FileType * hi SpecialKey ctermfg=black ctermbg=NONE
+au FileType * hi ModeMsg ctermfg=black cterm=NONE ctermbg=NONE
+au FileType * hi MoreMsg ctermfg=black ctermbg=NONE
+au FileType * hi NonText ctermfg=black ctermbg=NONE
+au FileType * hi vimGlobal ctermfg=black ctermbg=NONE
+au FileType * hi goComment ctermfg=black ctermbg=NONE
+au FileType * hi ErrorMsg ctermbg=234 ctermfg=darkred cterm=NONE
+au FileType * hi Error ctermbg=234 ctermfg=darkred cterm=NONE
+au FileType * hi SpellBad ctermbg=234 ctermfg=darkred cterm=NONE
+au FileType * hi SpellRare ctermbg=234 ctermfg=darkred cterm=NONE
+au FileType * hi Search ctermbg=236 ctermfg=darkred
+au FileType * hi vimTodo ctermbg=236 ctermfg=darkred
+au FileType * hi Todo ctermbg=236 ctermfg=darkred
+au FileType * hi IncSearch ctermbg=236 cterm=NONE ctermfg=darkred
+au FileType * hi MatchParen ctermbg=236 ctermfg=darkred
+au FileType markdown,pandoc hi Title ctermfg=yellow ctermbg=NONE
+au FileType markdown,pandoc hi Operator ctermfg=yellow ctermbg=NONE
+au FileType markdown,pandoc set tw=0
+au FileType markdown,pandoc set wrap
+au FileType yaml hi yamlBlockMappingKey ctermfg=NONE
+au FileType yaml set sw=2
+au FileType bash set sw=2
+au FileType c set sw=8
+au FileType markdown,pandoc noremap j gj
+au FileType markdown,pandoc noremap k gk
+au FileType sh set noet
+
+" + --------- + "
+" | NERD Tree |
+" + --------- + "
+
+let g:NERDTreeWinPos = "right"
+let g:NERDTreeShowHidden = 1
+
+nnoremap <leader>e :NERDTreeToggle<CR>
+
+" + --------------------- + "
+" | Go Programming Langauge |
+" + --------------------- + "
+
+" Ativar o vim-go
+filetype plugin on
+
+" Formate o código automaticamente ao salvar
+autocmd BufWritePre *.go :silent! Fmt
+
+let g:go_fmt_fail_silently = 0
+let g:go_fmt_command = 'goimports'
+
+" Ativar realce de sintaxe para arquivos de teste Go
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_variable_declarations = 1
+let g:go_highlight_variable_assignments = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_diagnostic_errors = 1
+let g:go_highlight_diagnostic_warnings = 1
+
+" Configurar as ferramentas Go (certifique-se de que o caminho esteja correto)
+let g:go_fmt_command = "goimports"
+let g:go_auto_type_info = 1
+let g:go_gofmt = "gofumpt"
+let g:go_metalinter_fast = 1
+let g:go_metalinter_deadline = "5s"
+let g:go_metalinter_enabled = ['errcheck', 'unparam', 'gofmt', 'golint', 'goconst', 'vet', 'ineffassign', 'maligned']
+
+" Mostrar informações de documentação ao passar o mouse sobre identificadores
+let g:go_auto_type_info = 1
+
+" Ativar o linting automático
+let g:go_autosave = 1
+
+" Gopls
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+
+" + --- + "
+" | CoC |
+" + --- + "
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+nnoremap <C-j> <Plug>(coc-diagnostic-prev)
+nnoremap <C-k> <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation
+" nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gt <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+" nnoremap <silent> K :call ShowDocumentation()<CR>
+
+" To enable highlight current symbol on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
