@@ -228,7 +228,7 @@ nnoremap <leader>e :NERDTreeToggle<CR>
 filetype plugin on
 
 " Formate o código automaticamente ao salvar
-autocmd BufWritePre *.go :silent! Fmt
+" autocmd BufWritePre *.go :silent! Fmt
 
 let g:go_fmt_fail_silently = 0
 let g:go_fmt_command = 'goimports'
