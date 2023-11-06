@@ -277,14 +277,20 @@ nnoremap <C-j> <Plug>(coc-diagnostic-prev)
 nnoremap <C-k> <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation
-" nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gt <Plug>(coc-type-definition)
-" nmap <silent> gi <Plug>(coc-implementation)
-" nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window
-" nnoremap <silent> K :call ShowDocumentation()<CR>
+nnoremap <silent> K :call ShowDocumentation()<CR>
 
 " To enable highlight current symbol on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
+nmap <silent> <leader>rn <Plug>(coc-rename)
+nmap <silent> <leader>td  <Plug>(coc-type-definition)
+nmap <silent> <leader>fi  <Plug>(coc-implementation)
+nmap <silent> <leader>fr  <Plug>(coc-references)
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<c-h>"
