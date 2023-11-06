@@ -1,25 +1,21 @@
 call plug#begin()
 
-" Go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }      " Go
+Plug 'neoclide/coc.nvim', {'branch': 'release'}         " CoC
+Plug 'scrooloose/nerdtree'                              " NERD Tree
+Plug 'morhetz/gruvbox'                                  " Gruvbox Theme
+Plug 'vim-airline/vim-airline'                          " Vim Airline
+Plug 'ryanoasis/vim-devicons'                           " Dev Icons
+Plug 'tpope/vim-commentary'                             " Comment stuff out
 
-" CoC
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'mattn/emmet-vim'                                  " Emmet for HTML5
+Plug 'othree/html5.vim'                                 " HTML5 syntax, indent
+Plug 'elzr/vim-json'                                    " JSON highlighting
+Plug 'stephpy/vim-yaml'                                 " For yaml files
 
-" NERD Tree
-Plug 'scrooloose/nerdtree'
-
-" Gruvbox Theme
-Plug 'morhetz/gruvbox'
-
-" Vim Airline
-Plug 'vim-airline/vim-airline'
-
-" Dev Icons
-Plug 'ryanoasis/vim-devicons'
-
-" Comment stuff out
-Plug 'tpope/vim-commentary'
+Plug 'pangloss/vim-javascript'                          " JS indentantion and syntax support
+Plug 'leafgarland/typescript-vim'                       " TypeScript syntax files
+Plug 'peitalin/vim-jsx-typescript'                      " React JSX syntax highlighting for vim and TS
 
 call plug#end()
 
@@ -152,6 +148,13 @@ nnoremap <leader>h <C-w>h
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 nnoremap <leader>l <C-w>l
+
+" Emmet Vim
+" The trailing , still needs to be entered, so the new keymap would be <C-Z>,
+let g:user_emmet_leader_key='<C-Z>'
+
+" Set filetypes as typescriptreact
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact"
 
 " + ------------------------------------------ + "
 " | Gruvbox Dark Friendly From github.com/rwxrob |
