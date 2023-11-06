@@ -153,9 +153,6 @@ nnoremap <leader>l <C-w>l
 " The trailing , still needs to be entered, so the new keymap would be <C-Z>,
 let g:user_emmet_leader_key='<C-Z>'
 
-" Set filetypes as typescriptreact
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact"
-
 " + ------------------------------------------ + "
 " | Gruvbox Dark Friendly From github.com/rwxrob |
 " + ------------------------------------------ + "
