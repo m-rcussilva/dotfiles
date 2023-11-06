@@ -16,6 +16,8 @@ Plug 'stephpy/vim-yaml'                                 " For yaml files
 Plug 'pangloss/vim-javascript'                          " JS indentantion and syntax support
 Plug 'leafgarland/typescript-vim'                       " TypeScript syntax files
 Plug 'peitalin/vim-jsx-typescript'                      " React JSX syntax highlighting for vim and TS
+Plug 'maxmellon/vim-jsx-pretty'                         " JSX and TSX highlighting
+Plug 'ap/vim-css-color'                                 " Color highlighter
 
 call plug#end()
 
