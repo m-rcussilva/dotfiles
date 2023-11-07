@@ -18,6 +18,9 @@ Plug 'leafgarland/typescript-vim'                       " TypeScript syntax file
 Plug 'peitalin/vim-jsx-typescript'                      " React JSX syntax highlighting for vim and TS
 Plug 'maxmellon/vim-jsx-pretty'                         " JSX and TSX highlighting
 Plug 'ap/vim-css-color'                                 " Color highlighter
+Plug 'ollykel/v-vim'                                    " V syntax highlighting
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " A command-line fuzzy finder
+Plug 'junegunn/fzf.vim'                                 " Fzf
 
 call plug#end()
 
@@ -154,6 +157,9 @@ nnoremap <leader>l <C-w>l
 " Emmet Vim
 " The trailing , still needs to be entered, so the new keymap would be <C-Z>,
 let g:user_emmet_leader_key='<C-Z>'
+
+" Fuzzy Finder
+nnoremap <leader>ff :Files<CR>
 
 " + ------------------------------------------ + "
 " | Gruvbox Dark Friendly From github.com/rwxrob |
