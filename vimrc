@@ -161,6 +161,15 @@ let g:user_emmet_leader_key='<C-Z>'
 " Fuzzy Finder
 nnoremap <leader>ff :Files<CR>
 
+" Moving Lines
+" Normal mode mappings
+" Insert mode mappings
+inoremap <c-j> <Esc>:m .+1<CR>==gi
+inoremap <c-k> <Esc>:m .-2<CR>==gi
+" Visual mode mappings
+vnoremap <c-j> :m '>+1<CR>gv=gv
+vnoremap <c-k> :m '<-2<CR>gv=gv
+
 " + ------------------------------------------ + "
 " | Gruvbox Dark Friendly From github.com/rwxrob |
 " + ------------------------------------------ + "
