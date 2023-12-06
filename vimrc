@@ -59,7 +59,7 @@ set autoindent
 " Enable Status Line
 set statusline=%F\ %y\ %l/%L\ %p%%\ %=
 
-set textwidth=80
+    set textwidth=80
 set formatoptions=tcqrn1
 set tabstop=4
 set shiftwidth=4
@@ -111,7 +111,7 @@ set smartcase
 set showmatch
 
 if has("syntax")
-  syntax enable
+    syntax enable
 endif
 
 " Disable beep and flash
@@ -126,6 +126,9 @@ au WinLeave * setlocal nocursorline
 
 " :noh executado automaticamente após salvar o arquivo
 autocmd BufWritePost * :nohlsearch
+
+" coc-prettier need this to format on save
+autocmd BufWritePost * execute "normal gg=G"
 
 " Salvar visualização (incluindo a posição do cursor) ao sair
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif

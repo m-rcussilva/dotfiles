@@ -1,0 +1,6 @@
+{
+    "tsserver.enableAutoImport": true,
+    "coc.preferences.formatOnSaveFiletypes": ["*"]
+
+}
+
