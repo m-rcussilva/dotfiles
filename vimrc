@@ -3,7 +3,7 @@ call plug#begin()
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }      " Go
 Plug 'neoclide/coc.nvim', {'branch': 'release'}         " CoC
 Plug 'scrooloose/nerdtree'                              " NERD Tree
-Plug 'morhetz/gruvbox'                                  " Gruvbox Theme
+Plug 'tomasiser/vim-code-dark'                          " Codedark Theme
 Plug 'vim-airline/vim-airline'                          " Vim Airline
 Plug 'ryanoasis/vim-devicons'                           " Dev Icons
 Plug 'tpope/vim-commentary'                             " Comment stuff out
@@ -33,7 +33,7 @@ set ruler
 set encoding=utf-8
 
 set background=dark
-colorscheme gruvbox
+colorscheme codedark
 
 set nowrap
 
