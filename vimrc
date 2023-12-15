@@ -59,7 +59,7 @@ set autoindent
 " Enable Status Line
 set statusline=%F\ %y\ %l/%L\ %p%%\ %=
 
-    set textwidth=80
+set textwidth=80
 set formatoptions=tcqrn1
 set tabstop=4
 set shiftwidth=4
@@ -127,9 +127,6 @@ au WinLeave * setlocal nocursorline
 " :noh executado automaticamente após salvar o arquivo
 autocmd BufWritePost * :nohlsearch
 
-" coc-prettier need this to format on save
-autocmd BufWritePost * execute "normal gg=G"
-
 " Salvar visualização (incluindo a posição do cursor) ao sair
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
@@ -143,13 +140,13 @@ nnoremap <C-l> :bnext<CR>
 " set foldmethod=indent
 
 " Automatically insert closing delimiters
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
+" inoremap " ""<left>
+" inoremap ' ''<left>
+" inoremap ( ()<left>
+" inoremap [ []<left>
+" inoremap { {}<left>
+" inoremap {<CR> {<CR>}<ESC>O
+" inoremap {;<CR> {<CR>};<ESC>O
 
 " For Split Navigation
 nnoremap <leader>h <C-w>h
