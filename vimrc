@@ -48,3 +48,9 @@ set wildmenu
 
 " Automatically indent new lines
 set autoindent
+
+" Enable search highlighting
+set hlsearch
+" Enable incremental search highlighting
+set incsearch
+
