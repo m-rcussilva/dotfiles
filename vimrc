@@ -1,5 +1,6 @@
 syntax on
 let mapleader = "\<Space>"
+set mouse=a
 set number
 set relativenumber
 set modelines=0
@@ -12,6 +13,9 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set noshiftround
+
+set cursorline
+:highlight Cursorline cterm=bold ctermbg=black
 
 " Change Block Cursor when in Insert Mode
 let &t_SI = "\<Esc>[6 q"
@@ -29,6 +33,15 @@ endif
 
 " Config for dark themes
 set background=dark
+" Enable color themes
+if !has('gui_running')
+    set t_Co=256
+endif
+" Enable true colors support
+set termguicolors
+" Vim colorscheme
+colorscheme desert
+
 
 " Disable automatic line breaks
 set nowrap
