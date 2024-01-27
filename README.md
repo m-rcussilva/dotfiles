@@ -1,4 +1,4 @@
-# Some of my Dotfiles
+# Dotfiles
 
 ### Credits
 
