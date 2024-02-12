@@ -30,3 +30,12 @@ vim.opt.virtualedit = "block"
 vim.opt.ignorecase = true
 
 vim.opt.termguicolors = true
+
+vim.cmd([[
+augroup vimrc-remember-cursor-position
+    autocmd!
+    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+augroup END
+]])
+
+vim.cmd('set inccommand=split')
