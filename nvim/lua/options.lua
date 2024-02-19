@@ -31,6 +31,8 @@ vim.opt.ignorecase = true
 
 vim.opt.termguicolors = true
 
+vim.opt.foldmethod = 'manual'
+
 vim.cmd([[
 augroup vimrc-remember-cursor-position
     autocmd!
