@@ -42,7 +42,6 @@ set termguicolors
 " Vim colorscheme
 colorscheme desert
 
-
 " Disable automatic line breaks
 set nowrap
 
@@ -66,6 +65,9 @@ set autoindent
 set hlsearch
 " Enable incremental search highlighting
 set incsearch
+" Enable smartcase search sensitivity
+set ignorecase
+set smartcase
 
 " Moving lines down and up using Ctrl+j and Ctrl+k
 nnoremap <c-j> :m .+1<CR>==
@@ -77,4 +79,3 @@ vnoremap <c-k> :m '<-2<CR>gv=gv
 
 " Automatically save and restore the last editing position
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
