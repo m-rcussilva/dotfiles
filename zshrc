@@ -29,7 +29,9 @@ setopt hist_verify            # show command with history expansion to user befo
     }
 
 # Prompt
-prompt="%B%F{red}┌%f"'${VIRTUAL_ENV:+($(basename$VIRTUAL_ENV))}'"%F{red}[%f%F{green}%n%f %F{yellow}🐦‍⬛%f %F{cyan}%m%f%F{red}]─[%F{magenta}%(6~.%-1~/…/%4~.%5~)%f%F{red}]%f%F{204}"'${vcs_info_msg_0_}'"%f"$'\n'"%F{red}└╼%f%F{yellow}$%f %b"
+prompt="%B%F{#5e5c64}┌%f"'${VIRTUAL_ENV:+($(basename$VIRTUAL_ENV))}'"%F{#5e5c64}[%f%F{#77767b}%n%f %F{#ffa348}in%F{#5e5c64}] ─ [%F{#77767b}%(6~.%-1~/…/%3~.%5~)%f%F{#5e5c64}]%f%F{#504e55}"'${vcs_info_msg_0_}'"%f"$'\n'"%F{#5e5c64}└╼%f%F{#ffa348}$%f %b"
+
+alias vim="nvim"
 
 # Load zsh-syntax-highlighting
 if [[ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
@@ -60,7 +62,8 @@ alias ll="ls -alG"
 
 eval "$(rbenv init - zsh)"
 
-export GOPATH=/Users/ms/dev/programmingLanguages/imperative/static/go
+export GOPATH=/Users/ms/dev/programming-languages/imperative/static/go
+export PATH=$PATH:$GOPATH/bin
 
 export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 export CPPFLAGS="-I/opt/homebrew/opt/openjdk@17/include"
@@ -74,3 +77,5 @@ if [[ -r /Users/ms/.opam/opam-init/init.zsh ]]; then
 fi
 
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+[ -f "/Users/ms/.ghcup/env" ] && source "/Users/ms/.ghcup/env" # ghcup-env
