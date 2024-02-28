@@ -19,34 +19,18 @@ setopt hist_ignore_dups       # ignore duplicated commands history list
 setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
 
-# Enabling and setting git info var to be used in prompt config.
-    autoload -Uz vcs_info
-    zstyle ':vcs_info:*' enable git svn
-    # This line obtains information from the vcs.
-    zstyle ':vcs_info:git*' formats "(%b) "
-    precmd() {
-        vcs_info
-    }
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git svn
+# This line obtains information from the vcs.
+zstyle ':vcs_info:git*' formats "(%b) "
+precmd() {
+    vcs_info
+}
 
 # Prompt
 prompt="%B%F{#5e5c64}┌%f"'${VIRTUAL_ENV:+($(basename$VIRTUAL_ENV))}'"%F{#5e5c64}[%f%F{#77767b}%n%f %F{#ffa348}in%F{#5e5c64}] ─ [%F{#77767b}%(6~.%-1~/…/%3~.%5~)%f%F{#5e5c64}]%f%F{#504e55}"'${vcs_info_msg_0_}'"%f"$'\n'"%F{#5e5c64}└╼%f%F{#ffa348}$%f %b"
 
 alias vim="nvim"
-
-# Load zsh-syntax-highlighting
-if [[ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
-    source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
-
-if [[ -d /opt/homebrew/share/zsh-completions ]]; then
-    fpath+=("/opt/homebrew/share/zsh-completions")
-    autoload -Uz compinit
-    compinit
-fi
-
-if [[ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
-    source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-fi
 
 # Select all suggestion instead of top on result only
 zstyle ':autocomplete:tab:*' insert-unambiguous yes
@@ -60,22 +44,24 @@ export CLICOLOR=1
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 alias ll="ls -alG"
 
+# Nodejs NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Install Antigen with brew, then past the path here
+source /opt/homebrew/Cellar/antigen/2.2.3/share/antigen/antigen.zsh
+
+# Zsh Syntax Highlighting, completions and autosuggestions
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-autosuggestions
+antigen apply
+
+# Load rbenv automatically
 eval "$(rbenv init - zsh)"
 
-export GOPATH=/Users/ms/dev/programming-languages/imperative/static/go
+# Go
+export GOPATH=/Users/ms/dev/prog-languages/go-workspace
 export PATH=$PATH:$GOPATH/bin
 
-export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
-export CPPFLAGS="-I/opt/homebrew/opt/openjdk@17/include"
-
-export PATH="/opt/homebrew/opt/node@18/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/node@18/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/node@18/include"
-
-if [[ -r /Users/ms/.opam/opam-init/init.zsh ]]; then
-     source /Users/ms/.opam/opam-init/init.zsh > /dev/null 2> /dev/null
-fi
-
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
-
-[ -f "/Users/ms/.ghcup/env" ] && source "/Users/ms/.ghcup/env" # ghcup-env
