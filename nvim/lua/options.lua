@@ -33,6 +33,8 @@ vim.opt.termguicolors = true
 
 vim.opt.foldmethod = 'manual'
 
+vim.opt.textwidth = 80
+
 vim.cmd([[
 augroup vimrc-remember-cursor-position
     autocmd!
