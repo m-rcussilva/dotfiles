@@ -1,7 +1,7 @@
 return {
     "williamboman/mason.nvim",
     dependencies = {
-    "williamboman/mason-lspconfig.nvim",
+        "williamboman/mason-lspconfig.nvim",
     },
 
     config = function()
@@ -11,9 +11,9 @@ return {
         mason.setup({
             ui = {
                 icons = {
-                  package_installed = "✓",
-                  package_pending = "➜",
-                  package_uninstalled = "✗",
+                    package_installed = "✓",
+                    package_pending = "➜",
+                    package_uninstalled = "✗",
                 },
             },
         })
@@ -28,11 +28,11 @@ return {
                 "pyright",
                 "clangd",
                 "gopls",
-                "htmx",
+                -- "htmx",
                 "clojure_lsp",
             },
 
             automatic_installation = true,
-        }) 
+        })
     end,
 }
