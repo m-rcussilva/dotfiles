@@ -69,6 +69,9 @@ set incsearch
 set ignorecase
 set smartcase
 
+" Set clipboard between OS and Vim
+set clipboard=unnamed
+
 " Moving lines down and up using Ctrl+j and Ctrl+k
 nnoremap <c-j> :m .+1<CR>==
 nnoremap <c-k> :m .-2<CR>==
