@@ -1,7 +1,6 @@
 -- Colorscheme
 return {
-    "Mofiqul/adwaita.nvim",
-    lazy = false,
+    'rebelot/kanagawa.nvim',
     priority = 1000,
 
     config = function()
