@@ -35,6 +35,8 @@ vim.opt.foldmethod = 'manual'
 
 vim.opt.textwidth = 80
 
+vim.opt.cmdheight = 0
+
 vim.cmd([[
 augroup vimrc-remember-cursor-position
     autocmd!
