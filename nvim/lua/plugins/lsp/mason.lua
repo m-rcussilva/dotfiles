@@ -30,6 +30,7 @@ return {
                 "gopls",
                 -- "htmx",
                 "clojure_lsp",
+                "rubocop"
             },
 
             automatic_installation = true,

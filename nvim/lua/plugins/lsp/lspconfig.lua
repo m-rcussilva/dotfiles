@@ -181,5 +181,13 @@ return {
             on_attach = on_attach,
             filetypes = { "html" },
         })
+
+        -- Ruby
+        lspconfig["rubocop"].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            filetypes = { "ruby" },
+            root_dir = util.root_pattern("Gemfile, ", ".git"),
+        })
     end,
 }
