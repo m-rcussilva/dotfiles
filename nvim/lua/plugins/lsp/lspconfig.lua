@@ -183,11 +183,33 @@ return {
         })
 
         -- Ruby
-        lspconfig["rubocop"].setup({
+        lspconfig["solargraph"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
-            filetypes = { "ruby" },
+            filetypes = { "ruby", "eruby" },
             root_dir = util.root_pattern("Gemfile, ", ".git"),
+            settings = {
+                solargraph = {
+                    useBundler = true,
+                    diagnostic = true,
+                    completion = true,
+                    hover = true,
+                    formatting = true,
+                    symbols = true,
+                    definitions = true,
+                    rename = true,
+                    references = true,
+                    folding = true
+                }
+            }
+        })
+
+        -- Templ HTML
+        lspconfig["templ"].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            filetypes = { "templ" },
+            root_dir = util.root_pattern("go.work", "go.mod", ".git"),
         })
     end,
 }

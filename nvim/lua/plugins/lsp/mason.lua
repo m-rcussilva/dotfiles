@@ -28,9 +28,11 @@ return {
                 "pyright",
                 "clangd",
                 "gopls",
-                -- "htmx",
+                "htmx",
                 "clojure_lsp",
-                "rubocop"
+                "templ",
+                "solargraph",
+                "jsonls"
             },
 
             automatic_installation = true,
