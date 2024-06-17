@@ -27,6 +27,7 @@ detect_urls yes
 show_hyperlink_targets no
 underline_hyperlinks hover
 strip_trailing_spaces always
+mouse_hide_wait 3.0
 
 # Mouse actions
 mouse_map left click ungrabbed mouse_handle_click selection link prompt
