@@ -1,10 +1,10 @@
 -- Colorscheme
 return {
-    'rebelot/kanagawa.nvim',
+    "sho-87/kanagawa-paper.nvim",
+    lazy = false,
     priority = 1000,
-
+    opts = {},
     config = function()
-        vim.g.adwaita_darker = true
-        vim.cmd('colorscheme adwaita')
+        vim.cmd("colorscheme kanagawa-paper")
     end
 }
