@@ -210,46 +210,6 @@ return {
             on_attach = on_attach,
             filetypes = { "templ" },
             root_dir = util.root_pattern("go.work", "go.mod", ".git"),
-        })
-
-        -- Java
-        lspconfig["jdtls"].setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
-            filetypes = { "java" },
-            cmd = {
-                "jdtls",
-                "-configuration",
-                "~/Users/ms/.cache/jdtls/config",
-                "-data", "~/Users/ms/.cache/jdtls/workspace"
-            },
-            single_file_support = { true },
-            settings = {
-                java = {
-                    -- home = "/path/to/your/java/home",
-                    eclipse = {
-                        downloadSources = true
-                    },
-                    configuration = {
-                        updateBuildConfiguration = "interactive"
-                    },
-                    maven = {
-                        downloadSources = true
-                    },
-                    implementationsCodeLens = {
-                        enabled = true
-                    },
-                    referencesCodeLens = {
-                        enabled = true
-                    },
-                    references = {
-                        includeDecompiledSources = true
-                    },
-                    format = {
-                        enabled = true
-                    }
-                }
-            },
-        })
+        }) 
     end,
 }

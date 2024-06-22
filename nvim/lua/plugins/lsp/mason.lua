@@ -33,7 +33,6 @@ return {
                 "templ",
                 "solargraph",
                 "jsonls",
-                "jdtls",
             },
 
             automatic_installation = true,
