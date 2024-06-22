@@ -32,7 +32,8 @@ return {
                 "clojure_lsp",
                 "templ",
                 "solargraph",
-                "jsonls"
+                "jsonls",
+                "jdtls",
             },
 
             automatic_installation = true,
