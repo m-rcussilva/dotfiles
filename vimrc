@@ -86,8 +86,9 @@ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "norm
 " Text width
 set textwidth=80
 
-" Automatically close (), {}, [] and ""
+" Automatically close (), {}, [], `` and ""
 inoremap ( ()<Left>
 inoremap { {}<Left>
 inoremap [ []<Left>
 inoremap " ""<Left>
+inoremap ` ``<Left>
