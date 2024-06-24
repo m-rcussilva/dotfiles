@@ -82,3 +82,12 @@ vnoremap <c-k> :m '<-2<CR>gv=gv
 
 " Automatically save and restore the last editing position
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
+" Text width
+set textwidth=80
+
+" Automatically close (), {}, [] and ""
+inoremap ( ()<Left>
+inoremap { {}<Left>
+inoremap [ []<Left>
+inoremap " ""<Left>
