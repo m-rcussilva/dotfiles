@@ -104,3 +104,6 @@ let g:markdown_fenced_languages = [
     \ "python",
     \ "c"
 \ ]
+
+" Background transparent
+" hi Normal guibg=NONE ctermbg=NONE
