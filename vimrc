@@ -106,4 +106,7 @@ let g:markdown_fenced_languages = [
 \ ]
 
 " Background transparent
-" hi Normal guibg=NONE ctermbg=NONE
+highlight Normal ctermbg=NONE guibg=NONE
+highlight NonText ctermbg=NONE guibg=NONE
+highlight LineNr ctermbg=NONE guibg=NONE
+highlight Folded ctermbg=NONE guibg=NONE
