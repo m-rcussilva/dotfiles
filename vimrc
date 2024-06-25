@@ -92,3 +92,15 @@ inoremap { {}<Left>
 inoremap [ []<Left>
 inoremap " ""<Left>
 inoremap ` ``<Left>
+
+" Enable Markdown highlighting syntax
+let g:markdown_fenced_languages = [
+    \ "java",
+    \ "javascript",
+    \ "go",
+    \ "ruby",
+    \ "html",
+    \ "css",
+    \ "python",
+    \ "c"
+\ ]
